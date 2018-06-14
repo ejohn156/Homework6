@@ -29,8 +29,9 @@ function displaytopicInfo() {
             topicRating = topicArr[i].rating
             
 
-            $("#topics-view" + i).append("Rating: " + topicRating + "<br>");
+          
             $("#topics-view" + i).append(topicImage);
+            $("#topics-view" + i).append("Rating: " + topicRating);
 
         }
     });
