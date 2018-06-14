@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Favorite animals</title>
+    <title>Favorite topics</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -26,43 +26,42 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="row1" style="margin-top:2%;">
-                            <span id="animals-view1" style="margin-right: 1%";></span>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div id="animals-view2" style="margin:2% 1% 0% 0%;">
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div id="animals-view3" style="margin:2% 1% 0% 0%;">
-                            
-                        </div>
-                    </div>
+        <div class="row content">
+            <div class="col-md-8">
+                <div class="row gifRow">
+                    <div class="col-md-4" id="topics-view1"></div>
+                    <div class="col-md-4" id="topics-view2"></div>
+                    <div class="col-md-4" id="topics-view3"></div>
                 </div>
-
+                <div class="row gifRow">
+                    <div class="col-md-4" id="topics-view4"></div>
+                    <div class="col-md-4" id="topics-view5"></div>
+                    <div class="col-md-4" id="topics-view6"></div>
+                </div>
+                <div class="row gifRow">
+                    <div class="col-md-4" id="topics-view7"></div>
+                    <div class="col-md-4" id="topics-view8"></div>
+                    <div class="col-md-4" id="topics-view9"></div>
+                </div>
             </div>
+        
+        
+        <div class="col-md-4">
+            <h1>topic Search</h1>
+            <!-- Rendered buttons will get dumped Here  -->
+            <form id="topic-form">
+                <label for="topic-input">Enter a topic!</label>
+                <input type="text" id="topic-input">
+                <br>
 
-            <div class="col-md-2">
-                <h1>animal Search</h1>
-                <!-- Rendered buttons will get dumped Here  -->
-                <form id="animal-form">
-                    <label for="animal-input">Add a animal Bro</label>
-                    <input type="text" id="animal-input">
-                    <br>
-
-                    <!-- Button triggers new animal to be added -->
-                    <input id="add-animal" type="submit" value="Add a animal Bro">
-                </form>
-            </div>
+                <!-- Button triggers new topic to be added -->
+                <input id="add-topic" type="submit" value="Submit">
+            </form>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="javascript/giphy.js" type="text/javascript"></script>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascript/giphy.js" type="text/javascript"></script>
     </div>
 </body>
 

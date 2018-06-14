@@ -1,84 +1,76 @@
-// delete this completely or change this to animals
-var animals = ["cat", "dog", "cow", "horse"];
-
-function displayanimalInfo() {
-    $("#animals-view1").empty();
-    $("#animals-view2").empty();
-    $("#animals-view3").empty();
-    var animal = $(this).attr("data-name");
+// delete this completely or change this to topic
+var topic = ["cat", "dog", "cow", "horse"];
+function displaytopicInfo() {
+    for (var i = 0; i < 9; i++){
+    $("#topics-view" + (i+1)).empty();
+    }
+    var topic = $(this).attr("data-name");
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        animal + "&api_key=dc6zaTOxFJmzC&limit=10";
+        topic + "&api_key=dc6zaTOxFJmzC&limit=10";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        var animalArr = response.data
-        for (var i = 0; i < animalArr.length; i++) {
-            var animatedImageUrl = animalArr[i].images.fixed_height.url;
-            var stillImageUrl = animalArr[i].images.fixed_height_still.url;
-            var animalImage = $("<img>");
-            animalImage.attr("src", stillImageUrl);
-            animalImage.attr("data-still", stillImageUrl)
-            animalImage.attr("data-animate", animatedImageUrl)
-            animalImage.attr("data-state", "still")
-            animalImage.attr("width", "30%")
-            animalImage.attr("height", "120em")
-            animalImage.addClass("animalGif")
-            var animalRating = $("<p>")
-            animalRating = animalArr[i].rating
-            if (i < 3) {
-                $("#animals-view1").append(animalRating);
-                $("#animals-view1").append(animalImage);
-            }
-            if (i >= 3 && i < 6) {
-                $("#animals-view2").append(animalRating);
-                $("#animals-view2").append(animalImage);
-            }
-            if (i >= 6 && i < 9) {
-                $("#animals-view3").append(animalRating);
-                $("#animals-view3").append(animalImage);
-            }
+        var topicArr = response.data
+        for (var i = 0; i < topicArr.length; i++) {
+            var animatedImageUrl = topicArr[i].images.fixed_height.url;
+            var stillImageUrl = topicArr[i].images.fixed_height_still.url;
+            var topicImage = $("<img>");
+            topicImage.attr("src", stillImageUrl);
+            topicImage.attr("data-still", stillImageUrl)
+            topicImage.attr("data-animate", animatedImageUrl)
+            topicImage.attr("data-state", "still")
+            topicImage.attr("width", "80%")
+            topicImage.attr("height", "120em")
+            topicImage.addClass("topicGif")
+            var topicRating = $("<p>")
+            topicRating = topicArr[i].rating
+            
+
+            $("#topics-view" + i).append("Rating: " + topicRating + "<br>");
+            $("#topics-view" + i).append(topicImage);
+
         }
     });
-    //}
+
 }
 function renderButtons() {
     $("#buttons-view").empty();
 
-    // Loops through the array of animal giphy's
-    for (var i = 0; i < animals.length; i++) {
+    // Loops through the array of topic giphy's
+    for (var i = 0; i < topic.length; i++) {
         var a = $("<button>");
-        a.addClass("animal");
-        a.attr("data-name", animals[i]);
-        a.text(animals[i]);
+        a.addClass("topic");
+        a.attr("data-name", topic[i]);
+        a.text(topic[i]);
         $("#buttons-view").append(a);
     }
 }
 
-// This function handles events where the add animal button is clicked
-$("#add-animal").on("click", function (event) {
+// This function handles events where the add topic button is clicked
+$("#add-topic").on("click", function (event) {
     event.preventDefault();
     // This line of code will grab the input from the textbox
-    var animal = $("#animal-input").val().trim();
+    var newTopic = $("#topic-input").val().trim();
 
-    // The animal from the textbox is then added to our array
-    animals.push(animal);
+    // The topic from the textbox is then added to our array
+    topic.push(newTopic);
 
-    // Calling renderButtons which handles the processing of our animal array
+    // Calling renderButtons which handles the processing of our topic array
     renderButtons();
+    $("#topic-input").val("")
 
 });
 
-// Adding click event listeners to all elements with a class of "animal"
-$(document).on("click", ".animal", displayanimalInfo);
+// Adding click event listeners to all elements with a class of "topic"
+$(document).on("click", ".topic", displaytopicInfo);
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
 
-$(document).on("click", ".animalGif", function () {
-    alert("working")
+$(document).on("click", ".topicGif", function () {
     var state = $(this).attr("data-state");
 
     if (state == "still") {
